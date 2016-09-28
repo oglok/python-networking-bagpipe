@@ -1,9 +1,10 @@
 %global pypi_name networking-bagpipe
 %global sname networking_bagpipe
+%global master master
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-%{pypi_name}
-Version:        4.0.0
+Version:        master
 Release:        1%{?dist}
 Summary:        Mechanism driver for Neutron ML2 plugin using BGP E-VPNs/IP VPNs as a backend
 
@@ -39,7 +40,7 @@ Summary:        Mechanism driver for Neutron ML2 plugin using BGP E-VPNs/IP VPNs
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
 Requires:       python-pbr >= 1.6
-Requires:       python-Babel >= 2.3.4
+Requires:       python-babel >= 2.3.4
 Requires:       python-neutron-lib >= 0.1.0
 Requires:       python-oslo-db >= 4.1.0
 Requires:       python-oslo-config >= 3.9.0
@@ -60,7 +61,7 @@ Summary:        networking-bagpipe documentation
 Documentation for networking-bagpipe
 
 %prep
-%autosetup -n %{pypi_name}-%{upstream_version}
+%autosetup -v -n %{pypi_name}-%{upstream_version}
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
 
@@ -86,5 +87,5 @@ rm -rf html/.{doctrees,buildinfo}
 %doc html
 
 %changelog
-* Fri Sep 23 2016 Luke Hinds <lhinds@redhat.com> - 4.0.0-1
+* Fri Sep 23 2016 Ricardo Noriega <rnoriega@redhat.com> - 4.0.0-1
 - Initial package.
